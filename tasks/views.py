@@ -16,13 +16,13 @@ def index(request):
         form = TaskForm(request.POST)
         if form.is_valid():
             form.save()
-        return HttpResponseRedirect('/')
+        return HttpResponseRedirect('/') # redirects the site to the main html site
 
     context = {'tasks':tasks, 'form':form}
     return render(request, 'tasks/list.html', context)
 
 
-def updateTask(request, pk):
+def updateTask(request, pk): # pk is primary key
     task = Task.objects.get(id=pk)
 
     form = TaskForm(instance=task)

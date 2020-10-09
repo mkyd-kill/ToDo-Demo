@@ -1,20 +1,95 @@
-<h3>To Do</h3>
+<style>
+:root {
+    --color-white: #000;
+    --color-darkblue: #1b1b32;
+    --color-darkblue-alpha: rgba(27, 27, 50, 0.8);
+    --color-green: #37af65;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--color-white);
+    margin: 0;
+  }
+  
+  /* mobile friendly alternative to using background-attachment: fixed */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background: var(--color-darkblue);
+  }
 
-<form action="/" method="POST">
-    {% csrf_token %}
+  .center {
+      width: 600px;
+      height: 700px;
+      margin: 20px auto;
+      margin-top: 50px !important;
+      padding: 20px;
+      text-align: center;
+      background: var(--color-green);
+      border-radius: 10px;
+      border: 3px solid saddlebrown;
+  }
 
-    {{form.title}}
-    <input type="submit" name="Create Task">
-</form>
+  h3 {
+      color: #000;
+  }
 
-{% for task in tasks %}
-    <div>
-        <a href="{% url 'update_task' task.id %}">Update</a>
-        <a href="{% url 'delete' task.id %}">Delete</a>
+  .info {
+      text-decoration: none;
+      padding: 4px;
+      color: var(--color-darkblue);
+      font-weight: bold;
+      font-size: 15px;
+  }
 
-        {% if task.complete == True %}
-        <strike>{{task}}</strike>
-        {% else %}
-        <span>{{task}}</span>
+  .info:hover {
+      color: antiquewhite;
+      border-style: ridge;
+      border-color: brown;
+      font-size: 17px;
+  }
+</style>
+<head>
+    <title>ToDo Demo App</title>
+</head>
+
+<body>
+    <div class="center">
+        <h3>ToDo Demo App</h3>
+
+        <form action="/" method="POST">
+            {% csrf_token %}
+
+            {{form.title}}
+            <input type="submit" name="Create Task">
+        </form>
+
+        {% for task in tasks %}
+            <div class="infos">
+                <a class="info" href="{% url 'update_task' task.id %}">Update</a>
+                <a class="info" href="{% url 'delete' task.id %}">Delete</a>
+
+                {% if task.complete == True %}
+                <strike>{{task.title }}</strike>
+                {% else %}
+                <span><strong>{{ task.title }}</strong></span>
+            </div>
+                {% endif %}
+        {% endfor %}
     </div>
-{% endfor %}
+</body>

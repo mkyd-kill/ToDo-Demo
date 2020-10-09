@@ -1,8 +1,87 @@
-<p>Are you sure you want to delete "{{item}}"?</p>
+<style>
+    body {
+        background-color: aquamarine;
+        width: auto;
+        height: auto;
+    }
 
-<a href="{% url 'list' %}">Cancel</a>
+    #container {
+        width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        text-align: center;
+        background-color: burlywood;
+        border: 3px solid black;
+        border-radius: 15px;
+        margin-top: 50px !important;
+    }
 
-<form action="" method="POST">
-    {% csrf_token %}
-    <input type="submit" name="Confirm">
-</form>
+    .article {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 20px;
+    }
+
+    .center-side {
+        display: grid;
+        text-align: center;
+    }
+
+    .center-side > .wrapper {
+        margin-right: 20px;
+        word-spacing: .6in;
+        text-transform: uppercase;
+    }
+
+    .cancel {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 15px;
+        font-weight: 400;
+        text-decoration: none;
+        color: red;
+        padding-bottom: .09in;
+        margin-bottom: 5px;
+    }
+
+    .cancel:hover {
+        color:#000;
+        background-color: red;
+    }
+
+    .btn {
+        background-color: rgba(17, 192, 17, 0.781);
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 15px;
+        font-weight: 400;
+        color: black;
+        width: max-content;
+        margin: 5px;
+        text-transform: uppercase;
+    }
+
+    .btn:hover {
+        color: black;
+        background-color: aquamarine;
+    }
+</style>
+<head>
+    <title>To Do Demo App</title>
+</head>
+
+<body>
+    <div id="container">
+        <div class="center-items">
+            <p class="article">Are you sure you want to delete <strong>"{{ item.title }}"?</strong></p>
+
+            <div class="center-side">
+                <div class="wrapper">
+                    <a class="cancel" href="{% url 'list' %}">Cancel</a>
+
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <input class="btn" id="confirm" type="submit" name="confirm">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
