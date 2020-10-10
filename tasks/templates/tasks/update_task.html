@@ -1,15 +1,41 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<style>
+    body {
+        background-color: rgb(71, 131, 165);
+    }
+
+    .center-column {
+        width: 600px;
+        margin: 20px auto;
+        margin-top: 50px !important;
+        padding: 20px;
+        background-color: rgba(90, 156, 131, 0.74);
+        border-radius: 5px;
+        box-shadow: 6px 2px 30px 0 rgba(0, 0, 0, 0.80);
+    }
+
+    h3 {
+        text-align: center;
+    }
+
+    input::placeholder {
+        color: black;
+        font-family: monospace;
+    }
+</style>
 <head>
     <title>ToDo Demo App</title>
 </head>
 <body>
-    <div class="container">
+    <div class="center-column">
         <h3>Update Task</h3>
 
         <form action="" method="POST">
             {% csrf_token %}
 
             {{ form}}
-            <input type="submit" name="Update Task">
+            <input class="btn btn-sm btn-info" type="submit" name="Update Task">
         </form>
     </div>
 </body>
